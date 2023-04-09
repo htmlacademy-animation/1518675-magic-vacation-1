@@ -46,6 +46,14 @@
     }
   }
 
+  &:nth-child(odd) {
+    .slider__item-text {
+      animation-timing-function: ease-out;
+      animation-delay: 0.1s;
+      animation-duration: 0.4s;
+    }
+  }
+
   &:nth-child(2) {
     .slider__item-text {
       margin-top: 7.8rem;
@@ -96,6 +104,9 @@
   max-width: 34rem;
   font-size: 1.8rem;
   line-height: 2rem;
+  animation: slideRight 0.5s ease-out;
+  animation-fill-mode: forwards;
+  opacity: 0;
 
   @media (min-width: $stop-scaling) {
     margin-top: 36px;
@@ -274,5 +285,15 @@
       height: 0.4rem;
       background-color: $c-light;
     }
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(60px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
