@@ -21,9 +21,12 @@
 
 .page-header__wrapper {
   @include container;
-  display: flex;
   align-items: center;
   justify-content: space-between;
+  display: flex;
+  opacity: 0;
+  animation: fadeInLeft 1.5s 0.3s cubic-bezier(.36,1.28,.61,.73);
+  animation-fill-mode: forwards;
 }
 
 .page-header__logo {
@@ -305,6 +308,29 @@
 
   @media (max-width: $mobile) and (orientation: landscape) {
     margin-left: 0;
+    width: 100%;
+  }
+}
+
+.onLoaded {
+  .page-header__wrapper {
+    display: flex;
+  }
+
+  .page-header__menu {
+    a {
+      &.active::after {
+        animation: initialMenuAnimation 0.5s ease-out;
+      }
+    }
+  }
+}
+
+@keyframes initialMenuAnimation {
+  0% {
+    width: 0;
+  }
+  100% {
     width: 100%;
   }
 }
