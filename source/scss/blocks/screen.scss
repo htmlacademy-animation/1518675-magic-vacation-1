@@ -307,7 +307,7 @@
   background-color: $c-dark;
   position: relative;
 
-  &::before {
+  .screen__wrapper::before {
     content: "";
     position: absolute;
     width: 100%;
@@ -315,19 +315,31 @@
     bottom: 0;
     left: 0;
     background: $c-dark;
-    z-index: 4;
     opacity: 0;
     transition-property: height, opacity;
     transition-timing-function: ease-out;
     transition-duration: 0.4s, 0.1s;
   }
+
+  .prizes__title,
+  .prizes__lead {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out 0.6s;
+    z-index: 10;
+  }
 }
 
 .screen--prizes.active {
-  &::before {
-
-    height: 100%;
+  .prizes__title,
+  .prizes__lead {
     opacity: 1;
+  }
+
+  .screen__wrapper {
+    &::before {
+      height: 100%;
+      opacity: 1;
+    }
   }
 }
 
